@@ -1,11 +1,26 @@
-function chose() {
-  loadRound();
+let currentRound;
+
+document.addEventListener("DOMContentLoaded", function () {
+  currentRound = loadRound();
+});
+
+function chose(id) {
+  let yearSelected = parseInt(document.getElementById(id).innerHTML);
+  if (yearSelected == currentRound.year) {
+    //make this alert look better
+    alert("correct");
+  } else {
+    alert("wrong");
+  }
+  currentRound = loadRound();
 }
 
 function loadRound() {
   let year = getRndInteger(0, 58) * 4 + 1792;
   return new round(
-    "https://commons.wikimedia.org/wiki/United_States_presidential_election_maps#/media/File:ElectoralCollege2024.svg",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/File%3AElectoralCollege" +
+      year +
+      ".svg",
     year,
   );
 }
