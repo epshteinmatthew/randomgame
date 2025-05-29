@@ -42,7 +42,6 @@ class round {
     let yearC =
       year -
       (Math.floor(Math.random() * Math.floor(Math.random() * 4)) + 1) * 4;
-    console.log(Math.floor(Math.random() * Math.floor(Math.random() * 4)) * 4);
     //random assignment of buttons
     let postion = getRndInteger(0, 2);
     console.log(postion);
@@ -51,14 +50,17 @@ class round {
         document.getElementById("choice1").innerHTML = year;
         document.getElementById("choice2").innerHTML = yearB;
         document.getElementById("choice3").innerHTML = yearC;
+        break;
       case 1:
         document.getElementById("choice2").innerHTML = year;
         document.getElementById("choice1").innerHTML = yearB;
         document.getElementById("choice3").innerHTML = yearC;
+        break;
       case 2:
         document.getElementById("choice3").innerHTML = year;
         document.getElementById("choice2").innerHTML = yearB;
         document.getElementById("choice1").innerHTML = yearC;
+        break;
     }
   }
 }
