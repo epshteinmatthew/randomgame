@@ -1,9 +1,17 @@
 function chose() {
-  alert("todo");
+  loadRound();
 }
 
 function loadRound() {
-  return new round("nothing.png", 2000);
+  let year = getRndInteger(0, 58) * 4 + 1792;
+  return new round(
+    "https://commons.wikimedia.org/wiki/United_States_presidential_election_maps#/media/File:ElectoralCollege2024.svg",
+    year,
+  );
+}
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 //onload hook
@@ -13,8 +21,29 @@ class round {
     document.getElementById("image").src = imageSrc;
     this.year = year;
     //generate the other two random years
-    this.yearB = 0;
-    this.yearC = 0;
+    let yearB =
+      year +
+      (Math.floor(Math.random() * Math.floor(Math.random() * 4)) + 1) * 4;
+    let yearC =
+      year -
+      (Math.floor(Math.random() * Math.floor(Math.random() * 4)) + 1) * 4;
+    console.log(Math.floor(Math.random() * Math.floor(Math.random() * 4)) * 4);
     //random assignment of buttons
+    let postion = getRndInteger(0, 2);
+    console.log(postion);
+    switch (postion) {
+      case 0:
+        document.getElementById("choice1").innerHTML = year;
+        document.getElementById("choice2").innerHTML = yearB;
+        document.getElementById("choice3").innerHTML = yearC;
+      case 1:
+        document.getElementById("choice2").innerHTML = year;
+        document.getElementById("choice1").innerHTML = yearB;
+        document.getElementById("choice3").innerHTML = yearC;
+      case 2:
+        document.getElementById("choice3").innerHTML = year;
+        document.getElementById("choice2").innerHTML = yearB;
+        document.getElementById("choice1").innerHTML = yearC;
+    }
   }
 }
