@@ -1,0 +1,3 @@
+function chose() {
+  alert("wrong!");
+}
