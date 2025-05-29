@@ -16,7 +16,7 @@ function chose(id) {
 }
 
 function loadRound() {
-  let year = getRndInteger(0, 58) * 4 + 1792;
+  let year = getRndInteger(0, 57) * 4 + 1792;
   return new round(
     "https://commons.wikimedia.org/wiki/Special:FilePath/File%3AElectoralCollege" +
       year +
