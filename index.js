@@ -3,12 +3,12 @@ function chose() {
 }
 
 function loadRound() {
-  return new game("nothing.png", 2000);
+  return new round("nothing.png", 2000);
 }
 
 //onload hook
 
-class game {
+class round {
   constructor(imageSrc, year) {
     document.getElementById("image").src = imageSrc;
     this.year = year;
