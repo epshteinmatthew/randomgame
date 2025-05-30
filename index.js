@@ -1,5 +1,6 @@
 let currentRound;
 let streak = 0;
+let correct = 0;
 let answered = 0;
 totalTimeMS = 0;
 let start = Date.now();
@@ -9,22 +10,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function chose(id) {
+  answered++;
   totalTimeMS += Date.now() - start;
   start = Date.now();
   let yearSelected = parseInt(document.getElementById(id).innerHTML);
   if (yearSelected == currentRound.year) {
     //make this alert look better
     streak++;
-    answered++;
+    correct++;
     document.getElementById("avgtext").innerHTML = (
       totalTimeMS /
       1000 /
-      answered
+      correct
     ).toFixed(2);
+    document.getElementById("correcttext").className = "text-success";
+    document.getElementById("correcttext").innerHTML = "correct!";
   } else {
+    document.getElementById("correcttext").className = "text-danger";
+    document.getElementById("correcttext").innerHTML = "wrong!";
     streak = 0;
   }
   document.getElementById("streaktext").innerHTML = streak;
+  document.getElementById("percentright").innerHTML =
+    ((correct / answered) * 100).toFixed(1) + "%";
   currentRound = loadRound();
 }
 
