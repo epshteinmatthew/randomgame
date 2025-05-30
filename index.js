@@ -64,7 +64,7 @@ class round {
       year -
       (Math.floor(Math.random() * Math.floor(Math.random() * 4)) + 1) * 4;
     //random assignment of buttons
-    let postion = getRndInteger(0, 2);
+    let postion = getRndInteger(0, 3);
     console.log(postion);
     switch (postion) {
       case 0:
