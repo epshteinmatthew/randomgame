@@ -1,17 +1,30 @@
 let currentRound;
+let streak = 0;
+let answered = 0;
+totalTimeMS = 0;
+let start = Date.now();
 
 document.addEventListener("DOMContentLoaded", function () {
   currentRound = loadRound();
 });
 
 function chose(id) {
+  totalTimeMS += Date.now() - start;
+  start = Date.now();
   let yearSelected = parseInt(document.getElementById(id).innerHTML);
   if (yearSelected == currentRound.year) {
     //make this alert look better
-    alert("correct");
+    streak++;
+    answered++;
+    document.getElementById("avgtext").innerHTML = (
+      totalTimeMS /
+      1000 /
+      answered
+    ).toFixed(2);
   } else {
-    alert("wrong");
+    streak = 0;
   }
+  document.getElementById("streaktext").innerHTML = streak;
   currentRound = loadRound();
 }
 
